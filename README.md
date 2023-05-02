@@ -1,7 +1,4 @@
-# Cyclistic-bike-share-analysis
-Data analysis of Cyclistic dataset.
-
-![cover.jpg](attachment:29938990-b2ab-492a-8edf-c59eeba0d80c.jpg)
+# **Cyclistic bike-share analysis**
 
 ![cover](https://user-images.githubusercontent.com/25352514/235770671-4e2c092b-9265-49fd-8e8c-93ef9b765978.jpg)
 
@@ -44,97 +41,94 @@ The following actions have been completed:
 * Produced a new column named "day_name," which used the "WEEKDAY" command to compute the day of the week that each ride began. The format was set to General or a number with no decimal points.
 * Formulated a new column called "month_name," which used the "MONTH" command to determine the month of the year that each ride began. The format was set to General or a number with no decimal points.
 
-'''
-SQL Query for combining all the csv files tables into new table named "year2022_divvy_tripdata"
 
-SELECT *
-  INTO  year2022_divvy_tripdata
-FROM
-(
-	SELECT *
-	  FROM [dbo].[202201-divvy-tripdata]
+		SQL Query for combining all the csv files tables into new table named "year2022_divvy_tripdata"
 
-	UNION ALL
+		SELECT *
+		  INTO  year2022_divvy_tripdata
+		FROM
+		(
+			SELECT *
+			  FROM [dbo].[202201-divvy-tripdata]
 
-	SELECT *
-	  FROM [dbo].[202202-divvy-tripdata]
+			UNION ALL
 
-	  UNION ALL
+			SELECT *
+			  FROM [dbo].[202202-divvy-tripdata]
 
-	SELECT *
-	  FROM [dbo].[202203-divvy-tripdata]
+			  UNION ALL
 
-	  UNION ALL
+			SELECT *
+			  FROM [dbo].[202203-divvy-tripdata]
 
-	SELECT *
-	  FROM [dbo].[202204-divvy-tripdata]
+			  UNION ALL
 
-	  UNION ALL
+			SELECT *
+			  FROM [dbo].[202204-divvy-tripdata]
 
-	SELECT *
-	  FROM [dbo].[202205-divvy-tripdata]
+			  UNION ALL
 
-	  UNION ALL
+			SELECT *
+			  FROM [dbo].[202205-divvy-tripdata]
 
-	SELECT *
-	  FROM [dbo].[202206-divvy-tripdata]
+			  UNION ALL
 
-	  UNION ALL
+			SELECT *
+			  FROM [dbo].[202206-divvy-tripdata]
 
-	SELECT *
-	  FROM [dbo].[202207-divvy-tripdata]
+			  UNION ALL
 
-	  UNION ALL
+			SELECT *
+			  FROM [dbo].[202207-divvy-tripdata]
 
-	SELECT *
-	  FROM [dbo].[202208-divvy-tripdata]
+			  UNION ALL
 
-	  UNION ALL
+			SELECT *
+			  FROM [dbo].[202208-divvy-tripdata]
 
-	SELECT *
-	  FROM [dbo].[202209-divvy-tripdata]
+			  UNION ALL
 
-	  UNION ALL
+			SELECT *
+			  FROM [dbo].[202209-divvy-tripdata]
 
-	SELECT *
-	  FROM [dbo].[202210-divvy-tripdata]
+			  UNION ALL
 
-	  UNION ALL
+			SELECT *
+			  FROM [dbo].[202210-divvy-tripdata]
 
-	SELECT *
-	  FROM [dbo].[202211-divvy-tripdata]
+			  UNION ALL
 
-	  UNION ALL
+			SELECT *
+			  FROM [dbo].[202211-divvy-tripdata]
 
-	SELECT *
-	  FROM [dbo].[202212-divvy-tripdata]
+			  UNION ALL
 
-)  a
+			SELECT *
+			  FROM [dbo].[202212-divvy-tripdata]
 
-'''
+		)  a
 
-"""
 
-SQL Query for cleaning NULL values and store it into new table called "cyclistic_2022"
 
-SELECT *
-  INTO  cyclistic_2022
-FROM
-(
-	select 
-		* 
-	from
-		year2022_divvy_tripdata
-	where 
-		start_station_name IS NOT NULL
-		AND end_station_name IS NOT NULL
-		AND start_lat IS NOT NULL
-		AND start_lng IS NOT NULL
-		AND end_lat IS NOT NULL
-		AND end_lng IS NOT NULL
-) a
+		SQL Query for cleaning NULL values and store it into new table called "cyclistic_2022"
 
-"""
+		SELECT *
+		  INTO  cyclistic_2022
+		FROM
+		(
+			select 
+				* 
+			from
+				year2022_divvy_tripdata
+			where 
+				start_station_name IS NOT NULL
+				AND end_station_name IS NOT NULL
+				AND start_lat IS NOT NULL
+				AND start_lng IS NOT NULL
+				AND end_lat IS NOT NULL
+				AND end_lng IS NOT NULL
+		) a
+
 
 The final step involved exporting the table "cyclistic_2022" as a CSV file, making it ready to be used for analysis.
 
@@ -142,19 +136,19 @@ The final step involved exporting the table "cyclistic_2022" as a CSV file, maki
 
 In the subsequent stage, I utilized Tableau software to design and generate interactive visualizations for the data that was previously collected and processed. This step involved selecting appropriate charts and graphs to present the data in a clear and concise manner, allowing for easy interpretation and analysis of the trends and patterns that emerged from the data.
 
-![monthly_usage.PNG](attachment:4c6fc85b-31d3-4a5a-b754-3ae32744476b.PNG)
+![monthly_usage](https://user-images.githubusercontent.com/25352514/235771943-ab56b92a-d93d-47ad-a88b-a55f64382018.PNG)
 
 The graph illustrates the monthly usage of bikes by members and casual riders from January to December. The total number of rides per month is shown, categorized as member or casual riders. The highest usage was in May with 282,277 rides by members and 220,227 rides by casual riders. The lowest usage was in January, with 67,511 rides by members and 12,604 rides by casual riders. There is a trend of increased usage during summer months and decreased usage during winter months.
 
-![weekly_usage.PNG](attachment:309e9e66-7afe-416e-947e-5bd3850fe03d.PNG)
+![weekly_usage](https://user-images.githubusercontent.com/25352514/235772027-7ced681c-9dea-476d-995d-dde9d7f60b17.PNG)
 
 This data shows the number of bike rides taken by members and casual riders for each day of the week. The highest number of rides were taken by members on Thursdays with a count of 308,518, followed by Wednesdays with 301,487 and Tuesdays with 306,339. For casual riders, the highest number of rides were taken on Sundays with a count of 216,354, followed by Saturdays with 259,729 and Fridays with 177,706. It is interesting to note that the number of rides taken by members is higher than casual riders on weekdays, whereas casual riders took more rides on weekends.
 
-![ride_duration.PNG](attachment:c10196ed-20e5-489d-bd96-66d64fd068ed.PNG)
+![ride_duration](https://user-images.githubusercontent.com/25352514/235772102-bfb7914f-ef21-454a-9ad7-8cb2c44844fd.PNG)
 
 The data shows the average ride duration for casual and member riders. Casual riders have an average ride duration of 25 minutes, while members have an average ride duration of 11 minutes and 12 seconds.
 
-![rideable_type.PNG](attachment:e58f7253-18a9-4482-8f5c-de325ae3e504.PNG)
+![rideable_type](https://user-images.githubusercontent.com/25352514/235772162-0dc19fb9-b511-4ca6-8037-c821184ca819.PNG)
 
 The data shows the total count of rides taken by both members and casual riders based on the type of rideable. Classic bikes were used more by members than casual riders, while electric bikes were used more by casual riders. There were also a significant number of rides taken on docked bikes by casual riders.
 
